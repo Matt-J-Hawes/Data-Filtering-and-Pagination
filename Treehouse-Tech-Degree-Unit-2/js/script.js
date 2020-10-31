@@ -63,17 +63,18 @@ function addPagination(){
 			<li>
             <button type="button">${i}</button>
           </li>`)
-	}
+	}  const buttonOne = document.querySelector("button") // load in with first button 'active'
+	   buttonOne.className = "active"
 	//find the active button and display that page
 	ul.addEventListener("click", function(e){
-        
-        const active = '';
+              
         const currentPage = e.target;
         if(currentPage.tagName === "BUTTON"){
-        	active.className = "active";    // target active class from HTML
+        	let notActive = document.querySelector(".active"); 
+        	notActive.className = ''           // remove class from non-active buttons
         	currentPage.className = 'active'   // set class to the target
-        	showPage(data, currentPage.innerHTML) 
-        	currentPage.className = ''  // reset the target back to an empty class
+        	showPage(data, currentPage.innerHTML)
+
         } 
 	}) 
 }
