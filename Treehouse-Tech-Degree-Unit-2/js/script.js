@@ -54,34 +54,38 @@ This function will create and insert/append the elements needed for the paginati
 // variable to reference the HTML
 const ul = document.querySelector(".link-list")
 
-function addPagination(){
-
-	const numOfPages = Math.ceil(42/9); // variable to get a total page number and iterate through it
-	for(let i = 1; i <= numOfPages; i++){
-		// display buttons on page
-		ul.insertAdjacentHTML("beforeend", `
+function addPagination(list){
+    
+			const numOfPages = Math.ceil(list.length/9); // variable to get a total page number and iterate through it
+			for(let i = 1; i <= numOfPages; i++){
+			// display buttons on page
+			ul.insertAdjacentHTML("beforeend", `
 			<li>
-            <button type="button">${i}</button>
-          </li>`)
-	}  const buttonOne = document.querySelector("button") // load in with first button 'active'
-	   buttonOne.className = "active"
-	//find the active button and display that page
-	ul.addEventListener("click", function(e){
-              
-        const currentPage = e.target;
-        if(currentPage.tagName === "BUTTON"){
-        	let notActive = document.querySelector(".active"); 
-        	notActive.className = ''           // remove class from non-active buttons
-        	currentPage.className = 'active'   // set class to the target
-        	showPage(data, currentPage.innerHTML)
+			<button type="button">${i}</button>
+			</li>`) 
+			const buttonOne = document.querySelector("button") // load in with first button 'active'
+			buttonOne.className = "active"
 
-        } 
+		}  
+
+		    
+			//find the active button and display that page
+			ul.addEventListener("click", function(e){
+            
+			const currentPage = e.target;
+			if(currentPage.tagName === "BUTTON"){
+			let notActive = document.querySelector(".active"); 
+			notActive.className = ''           // remove class from non-active buttons
+			currentPage.className = 'active'   // set class to the target
+			showPage(data, currentPage.innerHTML)
+
+		} 
 	}) 
 }
 
 
 
-addPagination()
+addPagination(data)
 showPage(data,1)
 
 // Call functions
