@@ -105,7 +105,7 @@ function findStudent(){
 }; 
 
 //CALL FUNCTIONS
-addPagination(data)
-showPage(data,1)
-findStudent()
+addPagination(data);
+showPage(data,1);
+findStudent();
 
