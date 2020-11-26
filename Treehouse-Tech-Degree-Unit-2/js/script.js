@@ -17,11 +17,9 @@ header.innerHTML =
  `<label for="search" class="student-search">
 	<input id="search" placeholder="Search by name...">
 	<button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
-	<button class='cancel' type="button">&#x274C</button>
 </label>`
 const searchButton = header.querySelector('button')
 const searchInput = header.querySelector('input')
-const cancelButton = header.querySelector('.cancel')
 
 //CREATES AND APPENDS A PAGE OF 9 STUDENTS
 function showPage(list, page){
@@ -64,48 +62,21 @@ function addPagination(list){
 	}); 
  };
 
-//CALLBACK FUNCTION TO REMOVE BUTTON CLASS
-function removeActiveClass(){
- let notActive = document.querySelector(".active"); 
-	 notActive.className = ''                              
-     ul.className = 'active'
-     showPage(data, 1)
-};
-
 //SEARCH FEATURE TO FIND SPECIFIC STUDENT BY FIRST OR LAST NAME
-function findStudent(){
- 	searchButton.addEventListener('click', function(){
- 		for(let i = 0; i < data.length; i++){
-            if(searchInput.value.toUpperCase().includes(data[i].name.first.toUpperCase())||
-               searchInput.value.toUpperCase().includes(data[i].name.last.toUpperCase())){
-            	studentList.innerHTML =    
-	        `<li class="student-item cf">
-		        <div class="student-details">
-		        <img class="avatar" src="${data[i].picture.large}" alt="Profile Picture">
-		        <h3>${data[i].name.title} ${data[i].name.first} ${data[i].name.last}</h3>
-		        <span class="email">${data[i].email}</span></div>
-		        <div class="joined-details">
-		        <span class="date">${data[i].registered.date}</span>
-	        </div></li>`
-	        paginationDiv.removeChild(ul)
-            } 
-            else if(searchInput.value === ''){
-            	paginationDiv.appendChild(ul)           	
-            	removeActiveClass()           	
-
-            }; 		
- 		}; 					
- 	});
- 	//CLEARS SEARCH INPUT AND RETURNS TO FIRST PAGE
- 	cancelButton.addEventListener('click', function(){
- 		searchInput.value = ''
- 		paginationDiv.appendChild(ul)
- 		removeActiveClass()		
- 	});
-}; 
+searchInput.addEventListener('keyup', function(){
+	const studentListLi = document.querySelectorAll('li')
+	for(let i = 0; i < studentListLi.length; i++){
+		let studentName = studentListLi[i].firstElementChild.innerHTML;
+        if(studentName.toUpperCase().includes(searchInput.value.toUpperCase())) {
+	          studentListLi[i].style.display = '';
+         } 
+         else {
+	          studentListLi[i].style.display = "none";
+         };
+	};
+}); 					
 
 //CALL FUNCTIONS
 addPagination(data);
 showPage(data,1);
-findStudent();
 
