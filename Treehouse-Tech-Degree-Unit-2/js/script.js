@@ -14,9 +14,9 @@ const studentList = document.querySelector(".student-list")
 const ul = document.querySelector(".link-list")
 const header = document.querySelector('.header')
 header.innerHTML =  
- `<label for="search" class="student-search">
-	<input id="search" placeholder="Search by name...">
-	<button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+ `<h2>Students</h2>
+ <label for="search" class="student-search">
+	<input id="search" placeholder="Search by name..."> 
 </label>`
 const searchButton = header.querySelector('button')
 const searchInput = header.querySelector('input')
@@ -64,15 +64,15 @@ function addPagination(list){
 
 //SEARCH FEATURE TO FIND SPECIFIC STUDENT BY FIRST OR LAST NAME
 searchInput.addEventListener('keyup', function(){
-	const studentListLi = document.querySelectorAll('li')
-	for(let i = 0; i < studentListLi.length; i++){
-		let studentName = studentListLi[i].firstElementChild.innerHTML;
+ 		const listElements = document.querySelectorAll('li')
+ 		for(let i = 0; i < listElements.length; i++){
+ 			let studentName = listElements[i].firstElementChild.innerHTML;
         if(studentName.toUpperCase().includes(searchInput.value.toUpperCase())) {
-	          studentListLi[i].style.display = '';
+          listElements[i].style.display = '';
          } 
          else {
-	          studentListLi[i].style.display = "none";
-         };
+          listElements[i].style.display = "none";
+        }
 	};
 }); 					
 

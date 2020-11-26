@@ -8,7 +8,7 @@
 
 body {
 	font-family: 'Montserrat', Helvetica, sans-serif;
-	background-color: rgb(229, 238, 250);
+	background: #13547a;
   transition: 0.4s;
 }
 
@@ -38,12 +38,18 @@ header h2 {
   font-size: 36px;
   text-transform: uppercase;
   font-weight: 800;
-  color: #4a5568;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 7px;
 	margin-bottom: 25px;
+  margin-left: 10px
 }
 
-
+h3{
+  margin-top: 30px;
+  margin-bottom: -40px;
+  color: white;
+  letter-spacing: 3px
+}
 
 .student-search {
   display: flex;
@@ -51,26 +57,20 @@ header h2 {
 
 .student-search input {
   width: 100%;
-  border-radius: 4px 0 0 4px;
-  border: 1px solid rgb(30, 144, 255);
+  border-radius: 4px;
+  border: none;
   padding: 10px 16px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .student-search input::placeholder {
   color: #929b9e;
 }
 
-.student-search button {
-  cursor: pointer;
-  width: 55px;
-  border-radius: 0 4px 4px 0;
-  border: 1px solid #1e90ff;
-  border-left: none;
-  padding: 0px 5px;
-  font-size: 14px;
-  background-color: #1e90ff;
-  color: #fff;
+.student-search input:focus {
+  outline: none;
+  color: #929b9e;
+   border: 3px solid #80d0c7
 }
 
 .student-search button img {
@@ -120,7 +120,8 @@ header h2 {
 	font-weight: 600;
 	font-size: 1.2rem;
   margin-bottom: 0.45em;
-  color: #1e90ff;
+  color: #13547a;
+  letter-spacing: 0px
 }
 
 .student-item .email {
@@ -158,20 +159,24 @@ header h2 {
   cursor: pointer;
 	outline: none;
 	padding: 0.5em 0.85em;
-	background: #fff;
+	background: #80d0c7;
   border: none;
   border-radius: 3px;
   text-decoration: none;
-	color: #1e90ff;
+	color: #13547a;
 	box-shadow: 0 1px 8px 0 rgba(22, 42, 90, 0.05);
 	transition: 0.4s;
 }
 
-.pagination li button.active, .pagination li button:hover {
-  background-color: #1e90ff;
-  color: #fff;
-}
 
+ .pagination li button:hover {
+  background-color: white;
+  color: #13547a;
+}
+.pagination li button.active{
+  color:#13547a ;
+  background: white
+}
 
 
 .no-results {
