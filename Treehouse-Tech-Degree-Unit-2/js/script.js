@@ -8,16 +8,19 @@
 *                                                                                 *
 /**********************************************************************************/
 
-//GLOBAL VARIABLE
+//GLOBAL VARIABLES
+const body = document.querySelector('body')
 const paginationDiv = document.querySelector('.pagination')
 const studentList = document.querySelector(".student-list") 
 const ul = document.querySelector(".link-list")
 const header = document.querySelector('.header')
+const pageNumberMessage = document.createElement('p')
+pageNumberMessage.className = 'pageMessage'
 header.innerHTML =  
  `<h2>Students</h2>
- <label for="search" class="student-search">
-	<input id="search" placeholder="Search by name..."> 
-</label>`
+	 <label for="search" class="student-search">
+	 <input id="search" placeholder="Search by name..."> 
+  </label>`
 const searchButton = header.querySelector('button')
 const searchInput = header.querySelector('input')
 
@@ -46,10 +49,13 @@ function addPagination(list){
 	const numOfPages = Math.ceil(list.length/9);                
 	for(let i = 1; i <= numOfPages; i++){		
 		ul.insertAdjacentHTML("beforeend", `
-			<li><button type="button">${i}</button></li>`) 			 
+			<a href="#"><li><button type="button">${i}</button></li></a>`) 			 
     };  	
     const buttonOne = ul.querySelector("button");       
-	buttonOne.className = "active"		    
+	buttonOne.className = "active";	
+	//SET DEFAULT PAGE NUMBER TO ONE
+	pageNumberMessage.innerHTML = `Page 1 of 5`
+    header.appendChild(pageNumberMessage);	    
 	//BUTTON EVENT LISTENER - CHANGES PAGE
 	ul.addEventListener("click", function(e){        
 	const currentPage = e.target;
@@ -58,6 +64,7 @@ function addPagination(list){
 				notActive.className = ''                                
 				currentPage.className = 'active'                         
 			showPage(data, currentPage.innerHTML)
+			pageNumberMessage.innerHTML = `Page ${currentPage.innerHTML} of 5`
 		}; 
 	}); 
  };

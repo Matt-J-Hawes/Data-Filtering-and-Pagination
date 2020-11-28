@@ -51,6 +51,12 @@ h3{
   letter-spacing: 3px
 }
 
+.pageMessage{
+  padding-left: 10px;
+  color: white;
+  margin-top: 1px
+}
+
 .student-search {
   display: flex;
 }
