@@ -83,7 +83,12 @@ h3{
   width: 25px;
 }
 
-
+.noResults{
+  margin-left: 20%;
+  color: #FF7F50;
+  font-size: 23px;
+  letter-spacing: 2px
+}
 
 .student-list {
   display: grid;
